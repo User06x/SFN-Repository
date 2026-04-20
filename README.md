@@ -2,7 +2,36 @@
 Repository for home assignment commits
 -----------------------------------------------------------------------------------------------------------------------------------------
 #Distributed File system - Controller Functionalities (Tasnim)
-TBA
+
+The controller is the main part of the system. It keeps track of files and storage clients. It does not store files, but decides where files should go and where they can be found.
+
+It receives commands from the user program and sends back the correct response or storage client details.
+
+#Commands:
+- LS – list files
+- SAVE filename – add file
+- READ filename – find file location
+- DELETE filename – remove file
+- INFO filename – show file details
+
+#Data used:
+- storage clients (IP and port)
+- file metadata (filename and location)
+
+#How it works:
+1. waits for connection
+2. receives command
+3. processes command
+4. sends response
+5. closes connection
+
+#Development Progress
+
+This is the first stage of the controller.
+
+At this point, the structure of the program is being set up. The basic idea of how the controller will work has been planned.
+
+The code is still in progress and not all features are implemented yet.
 -----------------------------------------------------------------------------------------------------------------------------------------
 #Distributed File System - Storage Clients (Luka) 
 What is my part for? The storage client/data node will be part of the distributed file system.
