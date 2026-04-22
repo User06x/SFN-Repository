@@ -52,5 +52,45 @@ LI_storage_functions.py - This will be the module that contains all the FO funct
 
 -----------------------------------------------------------------------------------------------------------------------------------------
 #Distributed File system - User Program (Darren)
-TBA
------------------------------------------------------------------------------------------------------------------------------------------
+The User Program acts as the client interface for interacting with the system.
+
+**Responsibilities:**
+- Connects to the Controller
+- Sends file system commands
+- Handles redirects to Storage Clients
+- Executes operations on the correct node
+
+**Supported Flow:**
+1. Connect to Controller
+2. Send command
+3. Receive response or redirect
+4. If redirected → connect to Storage Client
+5. Execute operation
+
+---
+
+## Communication Protocol
+
+The system uses a custom text-based protocol.
+
+**Format:**
+- Request: `COMMAND|ARG1|ARG2`
+- Response: `STATUS|DATA`
+
+**Status Codes:**
+- `OK` – Success
+- `ERROR` – Failure
+- `REDIRECT` – Connect to Storage Client
+
+See `PROTOCOL.md` for full details.
+
+---
+
+## Development Progress
+
+- Protocol design completed ✅
+- Controller structure in progress ⚙️
+- Storage Client implementation in progress ⚙️
+- User Program implementation starting soon ⏳
+
+---
