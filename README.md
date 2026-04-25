@@ -2,36 +2,45 @@
 Repository for home assignment commits
 -----------------------------------------------------------------------------------------------------------------------------------------
 #Distributed File system - Controller Functionalities (Tasnim)
+# Distributed File System - Controller (Stage 1)
 
-The controller is the main part of the system. It keeps track of files and storage clients. It does not store files, but decides where files should go and where they can be found.
+This project is part of the SFN1 unit and focuses on developing the Controller component of a Distributed File System.
 
-It receives commands from the user program and sends back the correct response or storage client details.
+At this stage, the basic structure of the controller has been created. The controller is designed to act as the central component of the system, responsible for managing metadata and coordinating communication between the User Program and the Storage Clients.
 
-#Commands:
-- LS – list files
-- SAVE filename – add file
-- READ filename – find file location
-- DELETE filename – remove file
-- INFO filename – show file details
+## Current Progress
 
-#Data used:
-- storage clients (IP and port)
-- file metadata (filename and location)
+- Basic socket setup implemented
+- Controller can start and wait for a connection
+- Connection from a client can be accepted
+- Initial structure of the program is defined
 
-#How it works:
-1. waits for connection
-2. receives command
-3. processes command
-4. sends response
-5. closes connection
+## Planned Features
 
-#Development Progress
+The controller will support the following commands in later stages:
 
-This is the first stage of the controller.
+- LS – List files and directories
+- MKDIR – Create a directory
+- RMDIR – Remove a directory
+- SAVE – Assign a file to a storage client
+- READ – Locate a file and redirect the user
+- DELETE – Remove file metadata
 
-At this point, the structure of the program is being set up. The basic idea of how the controller will work has been planned.
+## Data Structures (Planned)
 
-The code is still in progress and not all features are implemented yet.
+- A list to store file metadata
+- A list to store storage client details (IP and port)
+
+## Communication
+
+The controller will use socket programming to:
+- Receive commands from the User Program
+- Process requests
+- Send responses based on a defined protocol
+
+## Notes
+
+This is the initial stage of development. The core logic for handling commands and managing metadata will be implemented in the next stages.
 -----------------------------------------------------------------------------------------------------------------------------------------
 #Distributed File System - Storage Clients (Luka) 
 What is my part for? 
