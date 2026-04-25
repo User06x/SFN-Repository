@@ -34,7 +34,8 @@ At this point, the structure of the program is being set up. The basic idea of h
 The code is still in progress and not all features are implemented yet.
 -----------------------------------------------------------------------------------------------------------------------------------------
 #Distributed File System - Storage Clients (Luka) 
-What is my part for? The storage client/data node will be part of the distributed file system.
+What is my part for? 
+The storage client/data node will be part of the distributed file system.
 It will act as a form of warehouse that will physically store and gather files, it also checks
 for a connection from the user program and handles file operations (FO).
 
@@ -48,8 +49,8 @@ LI_storage_functions.py - This will be the module that contains all the FO funct
 -DELETE filename - This will delete a file
 -RENAME oldname newname - This will rename a file
 
-#How to run my storage client code: (WIP! I'll update this file and send a message on teams once i fully implement the storage client).
-
+#How to run my storage client code:
+Run the LI_storage_client.py file and wait for the User Program to connect on port 12347
 -----------------------------------------------------------------------------------------------------------------------------------------
 #Distributed File system - User Program (Darren)
 The User Program acts as the client interface for interacting with the system.
