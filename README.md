@@ -2,7 +2,7 @@
 Repository for home assignment commits
 -----------------------------------------------------------------------------------------------------------------------------------------
 #Distributed File system - Controller Functionalities (Tasnim)
-# Distributed File System - Controller (Stage 1)
+## Distributed File System - Controller (Stage 1)
 
 This project is part of the SFN1 unit and focuses on developing the Controller component of a Distributed File System.
 
