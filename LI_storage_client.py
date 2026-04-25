@@ -56,5 +56,3 @@ try:
 
 except:
     print("Error accepting connection.")
-
-#TBC
