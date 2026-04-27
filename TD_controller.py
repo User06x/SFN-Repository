@@ -18,7 +18,19 @@ print(f"Connected from {client_address}")
 # Loop to receive and process commands from the user program
 while True:
     data = client_socket.recv(1024)
+
+    # check if client disconnected
+    if not data:
+       client_socket.close()
+       break
+
     message = data.decode()
+    # handle quit command
+    if message == "quit":
+        response = "OK|bye"
+        client_socket.send(response.encode())
+        client_socket.close()
+        break
     print("Received:", message)
 
     # split message

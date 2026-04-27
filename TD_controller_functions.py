@@ -1,15 +1,13 @@
-nodes = [6001, 6002]
+# storage nodes with IP and port
+nodes = [
+    {"ip": "127.0.0.1", "port": 6001},
+    {"ip": "127.0.0.1", "port": 6002}
+]
 # dictionary to store file metadata
 files = {}
 directories = []
 
 
-def list_files():
-    if len(files) == 0:
-        return "OK|"
-    
-    result = ",".join(files.keys())
-    return f"OK|{result}"
 
 def list_files():
     # return empty response if no files exist
@@ -27,33 +25,24 @@ def list_files():
     return "OK|" + result
 
 def save_file(filename):
-    # choose first storage node
     node = nodes[0]
-    
-    # store file metadata
-    files[filename] = node
-    
-    # return redirect response
-    return "REDIRECT|127.0.0.1|" + str(node)
-
+    files[filename] = node["port"]
+    return "REDIRECT|" + node["ip"] + "|" + str(node["port"])
+   
+   
 def read_file(filename):
-    # check if file exists in metadata
     if filename in files:
-        node = files[filename]
-        return "REDIRECT|127.0.0.1|" + str(node)
+        port = files[filename]
+        ip = "127.0.0.1"
+        return "REDIRECT|" + ip + "|" + str(port)
     else:
         return "ERROR|File not found"
     
 def delete_file(filename):
     # check if file exists
     if filename in files:
-        node = files[filename]
-
-        # remove file from metadata
         del files[filename]
-
-        # return redirect to storage
-        return "REDIRECT|127.0.0.1|" + str(node)
+        return "OK|deleted"
     else:
         return "ERROR|File not found"
     
@@ -67,11 +56,10 @@ def make_directory(name):
 
 def rmdir_command(dirname):
     # check if directory exists
-    if dirname in files and files[dirname] == "dir":
-        del files[dirname]
+    if dirname in directories:
+        directories.remove(dirname)
         return "OK|removed"
     else:
         return "ERROR|Directory not found"
-    
 
       
