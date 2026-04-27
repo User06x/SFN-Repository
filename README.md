@@ -1,26 +1,34 @@
 # SFN-Repository
 Repository for home assignment commits
 -----------------------------------------------------------------------------------------------------------------------------------------
-# Distributed File System - Controller (Tasnim)
+## Distributed File System - Controller (Tasnim)
+## Distributed File System - Controller
 
-## Overview
-The Controller is the central component of the system. It manages file metadata and redirects the User Program to the correct Storage Client.
+This project implements the Controller component of a distributed file system. The controller manages metadata and handles communication between the User Program and Storage Clients.
 
-## Progress
-Stage 1: Basic socket server created and accepts connections from clients  
-Stage 2: Metadata storage implemented, command processing added, controller integrated with functions module
+## Features
+- LS – List files  
+- MKDIR – Create directory  
+- RMDIR – Remove directory  
+- SAVE – Assign file to storage node  
+- READ – Locate file and redirect  
+- DELETE – Remove file metadata  
 
-## Implemented Commands
-ls → returns list of files  
-save|filename → stores metadata and redirects  
-read|filename → finds file location and redirects
+## Structure
+- Main controller handles socket communication  
+- Functions are implemented in a separate module for better organization  
 
-## Data Structures
-files → stores file locations (filename → node)  
-nodes → list of storage client ports
+## Protocol
+Request: COMMAND|ARG  
+Response: STATUS|DATA  
+
+Status Codes:
+- OK – Success  
+- ERROR – Failure  
+- REDIRECT – Connect to storage node  
 
 ## Notes
-Controller does NOT store file content, only handles metadata and redirection. Uses format: COMMAND|ARG
+Basic error handling is implemented for missing arguments, invalid commands, and file/directory checks. The controller uses IP and port to redirect clients to storage nodes.
 -----------------------------------------------------------------------------------------------------------------------------------------
 #Distributed File System - Storage Clients (Luka) 
 What is my part for? 
