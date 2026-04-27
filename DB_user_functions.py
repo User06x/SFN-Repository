@@ -38,3 +38,21 @@ def rmdir_command(s, path):
     message = "rmdir|" + path
     response = send_command(s, message)
     return response
+
+def save_command(s, filename):
+    # Sends the save command to the Controller, expects a REDIRECT back
+    message = "save|" + filename
+    response = send_command(s, message)
+    return response
+
+def read_command(s, filename):
+    # Sends the read command to the Controller, expects a REDIRECT back
+    message = "read|" + filename
+    response = send_command(s, message)
+    return response
+
+def delete_command(s, filename):
+    # Sends the delete command to the Controller, expects a REDIRECT back
+    message = "delete|" + filename
+    response = send_command(s, message)
+    return response
