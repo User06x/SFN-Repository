@@ -21,6 +21,7 @@ while True:
     message = data.decode()
     print("Received:", message)
 
+    # split message
     parts = message.split("|")
     command = parts[0]
 
@@ -29,11 +30,48 @@ while True:
         client_socket.send(response.encode())
 
     elif command == "save":
-        filename = parts[1]
-        response = save_file(filename)
+        if len(parts) > 1:
+            filename = parts[1]
+            response = save_file(filename)
+        else:
+            response = "ERROR|Missing filename"
         client_socket.send(response.encode())
-        
+
     elif command == "read":
-        filename = parts[1]
-    response = read_file(filename)
-    client_socket.send(response.encode())
+        if len(parts) > 1:
+            filename = parts[1]
+            response = read_file(filename)
+        else:
+            response = "ERROR|Missing filename"
+        client_socket.send(response.encode())
+
+    elif command == "delete":
+        if len(parts) > 1:
+            filename = parts[1]
+            response = delete_file(filename)
+        else:
+            response = "ERROR|Missing filename"
+        client_socket.send(response.encode())
+
+    elif command == "mkdir":
+        if len(parts) > 1:
+            dirname = parts[1]
+            response = make_directory(dirname)
+        else:
+            response = "ERROR|Missing directory name"
+        client_socket.send(response.encode())
+
+    elif command == "rmdir":
+        if len(parts) > 1:
+            dirname = parts[1]
+            response = rmdir_command(dirname)
+        else:
+            response = "ERROR|Missing directory name"
+        client_socket.send(response.encode())
+
+    else:
+        response = "ERROR|Unknown command"
+        client_socket.send(response.encode())
+
+
+

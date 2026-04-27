@@ -1,6 +1,7 @@
 nodes = [6001, 6002]
 # dictionary to store file metadata
 files = {}
+directories = []
 
 
 def list_files():
@@ -42,3 +43,35 @@ def read_file(filename):
         return "REDIRECT|127.0.0.1|" + str(node)
     else:
         return "ERROR|File not found"
+    
+def delete_file(filename):
+    # check if file exists
+    if filename in files:
+        node = files[filename]
+
+        # remove file from metadata
+        del files[filename]
+
+        # return redirect to storage
+        return "REDIRECT|127.0.0.1|" + str(node)
+    else:
+        return "ERROR|File not found"
+    
+def make_directory(name):
+    # check if directory already exists
+    if name not in directories:
+        directories.append(name)
+        return "OK|Directory created"
+    else:
+        return "ERROR|Directory already exists"
+
+def rmdir_command(dirname):
+    # check if directory exists
+    if dirname in files and files[dirname] == "dir":
+        del files[dirname]
+        return "OK|removed"
+    else:
+        return "ERROR|Directory not found"
+    
+
+      
