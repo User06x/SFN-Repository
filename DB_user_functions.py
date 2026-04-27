@@ -56,3 +56,15 @@ def delete_command(s, filename):
     message = "delete|" + filename
     response = send_command(s, message)
     return response
+
+def quit_controller(s):
+    # Sends quit to the Controller and closes the connection cleanly
+    try:
+        s.send("quit".encode())
+        response = s.recv(1024).decode()
+        print("Controller says:", response)
+        s.close()
+        print("Disconnected from Controller.")
+    except:
+        print("ERROR: Could not disconnect from Controller cleanly.")
+        
