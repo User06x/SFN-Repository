@@ -68,3 +68,17 @@ def quit_controller(s):
     except:
         print("ERROR: Could not disconnect from Controller cleanly.")
         
+def parse_redirect(response):
+    # Parses a REDIRECT response and returns (host, port) or None
+    # Expected format: REDIRECT|host|port
+    try:
+        parts = response.split("|")
+        if parts[0] == "REDIRECT":
+            host = parts[1]
+            port = int(parts[2])
+            return host, port
+        else:
+            return None
+    except:
+        print("ERROR: Could not parse redirect response.")
+        return None
