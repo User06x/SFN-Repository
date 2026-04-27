@@ -38,4 +38,3 @@ def rmdir_command(s, path):
     message = "rmdir|" + path
     response = send_command(s, message)
     return response
-    
