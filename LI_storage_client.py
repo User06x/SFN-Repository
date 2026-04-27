@@ -2,7 +2,7 @@
 #This file will be in charge of accepting connections from the User Program system and handle the file operations.
 
 import socket  #This is used to create the server and handle connections
-from storage_functions import save_file, read_file, delete_file, append_file  #This imports functions from my storage functions module
+from LI_storage_functions import save_file, read_file, delete_file, append_file  #This imports functions from my storage functions module
 
 #This will set up the server socket and will begin to start listening on port number 6001
 ss = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
