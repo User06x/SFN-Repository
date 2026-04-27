@@ -82,3 +82,14 @@ def parse_redirect(response):
     except:
         print("ERROR: Could not parse redirect response.")
         return None
+        
+def connect_to_storage(host, port):
+    # Creates and returns a socket connected to a Storage Client
+    try:
+        s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        s.connect((host, port))
+        print(f"Connected to Storage Client at {host}:{port}")
+        return s
+    except:
+        print(f"ERROR: Could not connect to Storage Client at {host}:{port}")
+        return None
