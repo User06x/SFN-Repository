@@ -1,46 +1,26 @@
 # SFN-Repository
 Repository for home assignment commits
 -----------------------------------------------------------------------------------------------------------------------------------------
-#Distributed File system - Controller Functionalities (Tasnim)
-## Distributed File System - Controller (Stage 1)
+# Distributed File System - Controller (Tasnim)
 
-This project is part of the SFN1 unit and focuses on developing the Controller component of a Distributed File System.
+## Overview
+The Controller is the central component of the system. It manages file metadata and redirects the User Program to the correct Storage Client.
 
-At this stage, the basic structure of the controller has been created. The controller is designed to act as the central component of the system, responsible for managing metadata and coordinating communication between the User Program and the Storage Clients.
+## Progress
+Stage 1: Basic socket server created and accepts connections from clients  
+Stage 2: Metadata storage implemented, command processing added, controller integrated with functions module
 
-## Current Progress
+## Implemented Commands
+ls → returns list of files  
+save|filename → stores metadata and redirects  
+read|filename → finds file location and redirects
 
-- Basic socket setup implemented
-- Controller can start and wait for a connection
-- Connection from a client can be accepted
-- Initial structure of the program is defined
-
-## Planned Features
-
-The controller will support the following commands in later stages:
-
-- LS – List files and directories
-- MKDIR – Create a directory
-- RMDIR – Remove a directory
-- SAVE – Assign a file to a storage client
-- READ – Locate a file and redirect the user
-- DELETE – Remove file metadata
-
-## Data Structures (Planned)
-
-- A list to store file metadata
-- A list to store storage client details (IP and port)
-
-## Communication
-
-The controller will use socket programming to:
-- Receive commands from the User Program
-- Process requests
-- Send responses based on a defined protocol
+## Data Structures
+files → stores file locations (filename → node)  
+nodes → list of storage client ports
 
 ## Notes
-
-This is the initial stage of development. The core logic for handling commands and managing metadata will be implemented in the next stages.
+Controller does NOT store file content, only handles metadata and redirection. Uses format: COMMAND|ARG
 -----------------------------------------------------------------------------------------------------------------------------------------
 #Distributed File System - Storage Clients (Luka) 
 What is my part for? 
