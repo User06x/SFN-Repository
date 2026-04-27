@@ -13,3 +13,16 @@ def show_menu():
     print("6. Delete a file")
     print("7. Quit")
     print("=============================")
+
+def main():
+    print("Starting User Program...")
+
+    # Connect to Controller
+    controller = connect_to_controller()
+    if controller is None:
+        print("Could not connect to Controller. Exiting.")
+        return
+
+    while True:
+        show_menu()
+        choice = input("Choose an option: ")
