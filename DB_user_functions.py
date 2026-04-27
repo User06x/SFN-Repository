@@ -11,3 +11,31 @@ def connect_to_controller():
         print("ERROR: Could not connect to Controller.")
         return None
     
+def send_command(s, message):
+    # Sends a command to the Controller and returns the response
+    try:
+        s.send(message.encode())        # convert text to bytes and send
+        response = s.recv(1024).decode() # receive bytes and convert back to text
+        return response
+    except:
+        print("ERROR: Could not send command to Controller.")
+        return None
+    
+def ls_command(s, path):
+    # Sends the ls command to the Controller to list files/directories
+    message = "ls|" + path
+    response = send_command(s, message)
+    return response
+
+def mkdir_command(s, path):
+    # Sends the mkdir command to the Controller to create a directory
+    message = "mkdir|" + path
+    response = send_command(s, message)
+    return response
+
+def rmdir_command(s, path):
+    # Sends the rmdir command to the Controller to remove a directory
+    message = "rmdir|" + path
+    response = send_command(s, message)
+    return response
+    
