@@ -1,4 +1,5 @@
 import socket
+from TD_controller_functions import *
 
 # create socket
 server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -24,4 +25,10 @@ while True:
     command = parts[0]
 
     if command == "ls":
-        print("LS command received")
+        response = list_files()
+        client_socket.send(response.encode())
+
+    elif command == "save":
+        filename = parts[1]
+        response = save_file(filename)
+        client_socket.send(response.encode())

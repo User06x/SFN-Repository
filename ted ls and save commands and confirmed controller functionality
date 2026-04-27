@@ -1,0 +1,38 @@
+[33m92df5d3[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m Implemented ls response using function
+[33m20e3e0b[m Added controller socket server
+[33m0a364e0[m Delete controller_stage1.py
+[33mcecca6a[m Fixed missing quit_storage after save command
+[33m2e704ee[m Updated README progress section
+[33mdd072eb[m Added quit_storage function and completed main program
+[33mf9f3671[m Added main function with connection and menu loop
+[33m185fc95[m Added show_menu function to DB_user_program.py
+[33m8c954fe[m Added storage client command functions - save, read, delete, append
+[33m9b8e23b[m Added connect_to_storage function
+[33mf94d87b[m Added parse_redirect helper function
+[33me9af75f[m Added quit_controller function
+[33m0c33291[m Added save, read, delete controller command functions
+[33me404ed0[m Update LI_storage_client.py
+[33maf4b770[m Update LI_storage_functions.py
+[33mf669d08[m Update LI_storage_functions.py
+[33mec5259c[m Update LI_storage_client.py
+[33ma0bd0f3[m Update LI_storage_client.py
+[33m76d1d31[m Resolve merge conflict
+[33me32fd7f[m Added ls, mkdir, rmdir command functions to DB_user_functions.py
+[33me933ae0[m Add files via upload
+[33md301eeb[m Add files via upload
+[33m10aa486[m Added user functions module - connection to Controller
+[33m9272719[m Update README.md
+[33m6e218f4[m Update README.md
+[33mb648e53[m Add files via upload
+[33me17ab82[m Update LI_storage_client.py
+[33m82aad0d[m Update README.md
+[33m5c5ccc2[m Update LI_storage_functions.py
+[33m7b3d997[m Merge pull request #2 from User06x/docs/readme-update
+[33m2463e16[m[33m ([m[1;31morigin/docs/readme-update[m[33m)[m Update README.md
+[33mdb89c70[m Merge pull request #1 from User06x/docs/protocol
+[33me5b1efc[m[33m ([m[1;31morigin/docs/protocol[m[33m)[m Add files via upload
+[33m1a4bfe1[m Update LI_storage_client.py
+[33mcb182b5[m Update README.md
+[33mba931e0[m Adding the storage client py files to the repo
+[33mdb443c5[m Update README.md
+[33meb96c79[m Just a README
