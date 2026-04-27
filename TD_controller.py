@@ -32,3 +32,8 @@ while True:
         filename = parts[1]
         response = save_file(filename)
         client_socket.send(response.encode())
+        
+    elif command == "read":
+        filename = parts[1]
+    response = read_file(filename)
+    client_socket.send(response.encode())

@@ -34,3 +34,11 @@ def save_file(filename):
     
     # return redirect response
     return "REDIRECT|127.0.0.1|" + str(node)
+
+def read_file(filename):
+    # check if file exists in metadata
+    if filename in files:
+        node = files[filename]
+        return "REDIRECT|127.0.0.1|" + str(node)
+    else:
+        return "ERROR|File not found"
