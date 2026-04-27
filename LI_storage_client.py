@@ -9,7 +9,7 @@ ss = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 ss.bind(('127.0.0.1', 6001))
 ss.listen()
 
-print("Storage Client is running and waiting for connection...")
+print("The storage client is now running and waiting for a connection...")
 
 try:
     ns, addr = ss.accept()  #This will wait for User Program to connect to the Storage Client
