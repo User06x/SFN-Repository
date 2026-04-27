@@ -1,53 +1,55 @@
 #This is the my storage client python file for the distributed file system
 #This file will be in charge of accepting connections from the User Program system and handle the file operations.
 
-import socket  #This is used to create the server and to the handle connections
-from LI_storage_functions import save_file, read_file, delete_file, rename_file  #This imports the functions from our storage functions module
+import socket  #This is used to create the server and handle connections
+from storage_functions import save_file, read_file, delete_file, append_file  #This imports functions from my storage functions module
 
-#This will set up the server socket and will begin to start listening on port number 12347
+#This will set up the server socket and will begin to start listening on port number 6001
 ss = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-ss.bind(('127.0.0.1', 12347))
+ss.bind(('127.0.0.1', 6001))
 ss.listen()
 
-print("The storage client is running and waiting for a connection...")
+print("Storage Client is running and waiting for connection...")
 
 try:
     ns, addr = ss.accept()  #This will wait for User Program to connect to the Storage Client
     print("User Program connected from", addr)
 
-    while True:  #This will keep receiving and handling commands until the EXIT option is chosen 
+    while True:  #This will keep looping and waiting for commands from the User Program module
         try:
             message = ns.recv(1024)
             message = message.decode()
+            message = message.strip()   #This will remove the '\n' at the end of the message
 
-            if message.startswith("SAVE"):    #This handles the file saving to disk section
-                parts = message.split(" ", 2)
+            parts = message.split("|")  #This will split the message by a pipe separator
+            command = parts[0]          #The first part is always the command
+
+            if command == "save":        #This will handle saving a file to the disk
                 filename = parts[1]
                 filedata = parts[2]
                 save_file(ns, filename, filedata)
 
-            elif message.startswith("READ"):    #This will handle the file reading and sending it back 
-                parts = message.split(" ", 1)
+            elif command == "read":      #This will handle reading a file and sending it back to the user
                 filename = parts[1]
                 read_file(ns, filename)
 
-            elif message.startswith("DELETE"):     #This handles the deletion of a file from the disk
-                parts = message.split(" ", 1)
+            elif command == "delete":    #This will handle the deletion of a file from the disk
                 filename = parts[1]
                 delete_file(ns, filename)
 
-            elif message.startswith("RENAME"):     #This handles the renaming of a file inside the disk
-                parts = message.split(" ", 2)
-                oldname = parts[1]
-                newname = parts[2]
-                rename_file(ns, oldname, newname)
+            elif command == "append":    #This will handle appending data to an already existing file
+                filename = parts[1]
+                filedata = parts[2]
+                append_file(ns, filename, filedata)
 
-            elif message == "EXIT":     #This handles the disconnection and stops the loops
+            elif command == "quit":      #This will handle disconnections, to stops the loop
+                response = "OK|bye\n"
+                ns.send(response.encode())
                 print("User Program disconnected.")
                 break
 
-            else:    #This will handle any unrecognised commands
-                response = "UNKNOWN_COMMAND"
+            else:                        #This will handle any command which is not recognised
+                response = "ERROR|unknown command\n"
                 ns.send(response.encode())
 
         except:
@@ -56,3 +58,4 @@ try:
 
 except:
     print("Error accepting connection.")
+
