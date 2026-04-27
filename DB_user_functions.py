@@ -93,3 +93,43 @@ def connect_to_storage(host, port):
     except:
         print(f"ERROR: Could not connect to Storage Client at {host}:{port}")
         return None
+    
+def storage_save(s, filename, content):
+    # Sends a save command to the Storage Client
+    message = "save|" + filename + "|" + content
+    try:
+        s.send(message.encode())
+        response = s.recv(1024).decode()
+        return response
+    except:
+        return "ERROR|Could not send save command"
+
+def storage_read(s, filename):
+    # Sends a read command to the Storage Client
+    message = "read|" + filename
+    try:
+        s.send(message.encode())
+        response = s.recv(1024).decode()
+        return response
+    except:
+        return "ERROR|Could not send read command"
+
+def storage_delete(s, filename):
+    # Sends a delete command to the Storage Client
+    message = "delete|" + filename
+    try:
+        s.send(message.encode())
+        response = s.recv(1024).decode()
+        return response
+    except:
+        return "ERROR|Could not send delete command"
+
+def storage_append(s, filename, content):
+    # Sends an append command to the Storage Client
+    message = "append|" + filename + "|" + content
+    try:
+        s.send(message.encode())
+        response = s.recv(1024).decode()
+        return response
+    except:
+        return "ERROR|Could not send append command"
