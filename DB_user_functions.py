@@ -133,3 +133,14 @@ def storage_append(s, filename, content):
         return response
     except:
         return "ERROR|Could not send append command"
+    
+def quit_storage(s):
+    # Sends quit to the Storage Client and closes the connection cleanly
+    try:
+        s.send("quit".encode())
+        response = s.recv(1024).decode()
+        print("Storage Client says:", response)
+        s.close()
+        print("Disconnected from Storage Client.")
+    except:
+        print("ERROR: Could not disconnect from Storage Client cleanly.")
