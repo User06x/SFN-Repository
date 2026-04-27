@@ -60,6 +60,7 @@ def main():
                         content = input("Enter content to save: ")
                         result = storage_save(sc, filename, content)
                         print("Response:", result)
+                        quit_storage(sc)
                         
             elif choice == "5":
                 # READ
