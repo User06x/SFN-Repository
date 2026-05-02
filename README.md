@@ -2,26 +2,11 @@
 Repository for home assignment commits
 -----------------------------------------------------------------------------------------------------------------------------------------
 ## Distributed File System - Controller (Tasnim)
-This project implements the Controller component of a distributed file system. The controller manages metadata and communication between the User Program and Storage Clients.
-## Features
-LS – List files
-MKDIR – Create directory
-RMDIR – Remove directory
-SAVE – Assign file to storage node
-READ – Locate file and redirect
-DELETE – Remove file metadata
-## Structure
-Main controller handles socket communication
-Functions are implemented in a separate module
-## Protocol
-Request: COMMAND|ARG
-Response: STATUS|DATA
-Status Codes:
-OK – Success
-ERROR – Failure
-REDIRECT – Connect to storage node
-## Notes
-Basic error handling is implemented for missing arguments, invalid commands, and file and directory checks. The controller uses IP and port to redirect clients to storage nodes.
+Distributed File System - Controller
+
+This part of the project is fully implemented. The controller handles all required commands (ls, save, read, delete, mkdir, rmdir), manages metadata, and communicates with storage nodes using sockets.
+
+All functionalities are completed as required.
 -----------------------------------------------------------------------------------------------------------------------------------------
 #Distributed File System - Storage Clients (Luka) 
 What is my part for? 
