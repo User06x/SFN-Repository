@@ -39,10 +39,11 @@ def read_file(filename):
         return "ERROR|File not found"
     
 def delete_file(filename):
-    # check if file exists
     if filename in files:
-        del files[filename]
-        return "OK|deleted"
+        port = files[filename]
+        ip = "127.0.0.1"
+        del files[filename]  # delete metadata
+        return "REDIRECT|" + ip + "|" + str(port)
     else:
         return "ERROR|File not found"
     
